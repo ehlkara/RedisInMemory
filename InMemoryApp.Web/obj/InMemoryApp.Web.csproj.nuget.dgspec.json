@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ehlkara/Documents/GitHub/RedisInMemoryProject/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj": {}
+    "/Users/ehlkara/Documents/GitHub/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj": {}
   },
   "projects": {
-    "/Users/ehlkara/Documents/GitHub/RedisInMemoryProject/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj": {
+    "/Users/ehlkara/Documents/GitHub/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ehlkara/Documents/GitHub/RedisInMemoryProject/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj",
+        "projectUniqueName": "/Users/ehlkara/Documents/GitHub/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj",
         "projectName": "InMemoryApp.Web",
-        "projectPath": "/Users/ehlkara/Documents/GitHub/RedisInMemoryProject/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj",
+        "projectPath": "/Users/ehlkara/Documents/GitHub/RedisInMemory/InMemoryApp.Web/InMemoryApp.Web.csproj",
         "packagesPath": "/Users/ehlkara/.nuget/packages/",
-        "outputPath": "/Users/ehlkara/Documents/GitHub/RedisInMemoryProject/RedisInMemory/InMemoryApp.Web/obj/",
+        "outputPath": "/Users/ehlkara/Documents/GitHub/RedisInMemory/InMemoryApp.Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ehlkara/.nuget/NuGet/NuGet.Config"
@@ -39,6 +39,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
