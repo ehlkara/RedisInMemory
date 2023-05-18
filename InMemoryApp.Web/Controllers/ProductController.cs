@@ -18,13 +18,30 @@ namespace InMemoryApp.Web.Controllers
 
         public IActionResult Index()
         {
-            _memoryCache.Set<string>("time", DateTime.Now.ToString());
+            // first way
+            //if(String.IsNullOrEmpty(_memoryCache.Get<string>("time")))
+            //{
+            //    _memoryCache.Set<string>("time", DateTime.Now.ToString());
+            //}
+
+            // second way
+
+            if(!_memoryCache.TryGetValue("time", out string timecache))
+            {
+                _memoryCache.Set<string>("time", DateTime.Now.ToString());
+            }
+           
 
             return View();
         }
 
         public IActionResult Show()
         {
+            _memoryCache.GetOrCreate<string>("time", entry =>
+            {
+                return DateTime.Now.ToString();
+            });
+
             ViewBag.time = _memoryCache.Get<string>("time");
 
             return View();
