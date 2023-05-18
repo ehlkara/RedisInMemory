@@ -28,21 +28,27 @@ namespace InMemoryApp.Web.Controllers
 
             if(!_memoryCache.TryGetValue("time", out string timecache))
             {
-                _memoryCache.Set<string>("time", DateTime.Now.ToString());
+                MemoryCacheEntryOptions options = new MemoryCacheEntryOptions();
+
+                options.AbsoluteExpiration = DateTime.Now.AddMinutes(1);
+
+                options.SlidingExpiration = TimeSpan.FromSeconds(10);
+
+                _memoryCache.Set<string>("time", DateTime.Now.ToString(), options);
             }
-           
 
             return View();
         }
 
         public IActionResult Show()
         {
-            _memoryCache.GetOrCreate<string>("time", entry =>
-            {
-                return DateTime.Now.ToString();
-            });
+            //_memoryCache.GetOrCreate<string>("time", entry =>
+            //{
+            //    return DateTime.Now.ToString();
+            //});
 
-            ViewBag.time = _memoryCache.Get<string>("time");
+            _memoryCache.TryGetValue("time", out string timecache);
+            ViewBag.time = timecache;
 
             return View();
         }
