@@ -1,0 +1,3 @@
+# RedisInMemory
+
+.Net Core7
