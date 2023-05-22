@@ -7,6 +7,7 @@ using IDistributedCacheRedisApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace IDistributedCacheRedisApp.Web.Controllers
 {
@@ -66,6 +67,24 @@ namespace IDistributedCacheRedisApp.Web.Controllers
         public IActionResult Remove()
         {
             _distributedCache.Remove("name");
+
+            return View();
+        }
+
+        public IActionResult ImageUrl()
+        {
+            byte[] imageByte = _distributedCache.Get("image");
+
+            return File(imageByte, "image/jpeg");
+        }
+
+        public IActionResult ImageCache()
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/car.jpeg");
+
+            byte[] imageByte = System.IO.File.ReadAllBytes(path);
+
+            _distributedCache.Set("image", imageByte);
 
             return View();
         }
