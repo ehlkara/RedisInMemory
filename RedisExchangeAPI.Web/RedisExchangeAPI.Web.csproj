@@ -15,9 +15,11 @@
   <ItemGroup>
     <None Remove="Services\" />
     <None Remove="Views\StringType\" />
+    <None Remove="Views\ListType\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Views\StringType\" />
+    <Folder Include="Views\ListType\" />
   </ItemGroup>
 </Project>
