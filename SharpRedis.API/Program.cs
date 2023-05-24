@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SharpRedis.API.Models;
 using SharpRedis.API.Repositories;
+using SharpRedis.Cache;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseInMemoryDatabase("SharpDatabase");
+});
+
+builder.Services.AddSingleton<RedisService>(sp =>
+{
+    return new RedisService(builder.Configuration["CacheOptions:Url"]);
+});
+
+builder.Services.AddSingleton<IDatabase>(sp =>
+{
+    var redisService = sp.GetRequiredService<RedisService>();
+
+    return redisService.GetDb(0);
 });
 
 var app = builder.Build();

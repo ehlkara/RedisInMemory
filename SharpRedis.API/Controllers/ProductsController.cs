@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SharpRedis.API.Models;
 using SharpRedis.API.Repositories;
+using SharpRedis.Cache;
+using StackExchange.Redis;
 
 namespace SharpRedis.API.Controllers
 {
@@ -14,10 +16,14 @@ namespace SharpRedis.API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
+        private readonly IDatabase _database;
 
-        public ProductsController(IProductRepository productRepository)
+        public ProductsController(IProductRepository productRepository, IDatabase database)
         {
             _productRepository = productRepository;
+            _database = database;
+
+            _database.StringSet("soyad", "karakurt");
         }
 
         [HttpGet]
