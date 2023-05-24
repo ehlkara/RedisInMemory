@@ -16,14 +16,10 @@ namespace SharpRedis.API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-        private readonly IDatabase _database;
 
-        public ProductsController(IProductRepository productRepository, IDatabase database)
+        public ProductsController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _database = database;
-
-            _database.StringSet("soyad", "karakurt");
         }
 
         [HttpGet]
