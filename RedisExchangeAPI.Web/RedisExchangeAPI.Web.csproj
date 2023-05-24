@@ -17,11 +17,15 @@
     <None Remove="Views\StringType\" />
     <None Remove="Views\ListType\" />
     <None Remove="Views\SetType\" />
+    <None Remove="Views\SortedSetType\" />
+    <None Remove="Views\HashType\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Views\StringType\" />
     <Folder Include="Views\ListType\" />
     <Folder Include="Views\SetType\" />
+    <Folder Include="Views\SortedSetType\" />
+    <Folder Include="Views\HashType\" />
   </ItemGroup>
 </Project>
